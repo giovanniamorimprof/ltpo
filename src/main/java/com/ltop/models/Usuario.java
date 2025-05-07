@@ -46,5 +46,11 @@ public class Usuario {
         this.email = email;
     }
 
+    // Incluir o metodo to string para que os objetos fiquem legíveis
+    @Override
+    public String toString() {
+        return "Usuario{id=" + id + ", nome='" + nome + "', email='" + email + "'}";
+    }
+
 }
 
