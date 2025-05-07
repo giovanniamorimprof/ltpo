@@ -19,10 +19,24 @@ public class UsuarioDAO {
 
     // Método para salvar um novo usuário
     public void salvar(Usuario usuario) {
-        em.getTransaction().begin();
-        em.persist(usuario);
-        em.getTransaction().commit();
+        try {
+            // Inicia a transação
+            em.getTransaction().begin();
+
+            // Persiste o usuário
+            em.persist(usuario);
+
+            // Comita a transação
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            // Em caso de erro, faz rollback da transação
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            e.printStackTrace(); // Opcional: Adicione um log ou uma mensagem adequada
+        }
     }
+
 
     // Método para buscar todos os usuários
     public List<Usuario> buscarTodos() {

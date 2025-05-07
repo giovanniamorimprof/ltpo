@@ -1,11 +1,9 @@
 package com.ltop.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity  // Marcando a classe como uma entidade JPA
+@Table(name = "tbl_usuarios")
 public class Usuario {
 
     @Id  // Definindo o campo 'id' como chave primária
